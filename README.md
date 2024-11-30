@@ -25,6 +25,13 @@ Screen shots of the website:
 ![Screenshot 2024-11-30 211704](https://github.com/user-attachments/assets/6d20102d-4ab9-43c6-a941-5c92e45d2eaa)
 
 
+
+Grpah generated in the website:
+![Screenshot 2024-11-30 214519](https://github.com/user-attachments/assets/7f6a032f-ff2e-4220-8b48-f0ef38f0a3c7)
+![Screenshot 2024-11-30 214724](https://github.com/user-attachments/assets/96626d27-de33-4eb4-81b7-45ba031831e6)
+![Screenshot 2024-11-30 214857](https://github.com/user-attachments/assets/56db930f-946c-475e-8cb3-d26854dcb5e3)
+![Screenshot 2024-11-30 215009](https://github.com/user-attachments/assets/78166866-59d1-4380-958d-189b7460f616)
+
 Genrating the graph from the user input: 
 https://github.com/user-attachments/assets/73ee9f57-1944-4155-8108-83e70bb1f320
 
