@@ -8,7 +8,8 @@ Tech Stack :
      5) LLM(Hugging Face’s GPT-2 model)
      
 Screen shots of the website:
-![Screenshot 2024-11-29 183453](https://github.com/user-attachments/assets/6fdf102b-988a-4af3-8633-0be9c453c285)
+![Screenshot 2024-11-30 212811](https://github.com/user-attachments/assets/705bcb11-b158-473f-8f03-ec5937b74c77)
+![Screenshot 2024-11-30 212954](https://github.com/user-attachments/assets/d990d50b-8c61-4f87-823b-7402c9bec850)
 ![Screenshot 2024-11-30 203842](https://github.com/user-attachments/assets/50b6ec97-ffde-4f91-9499-6f43bb2f329b)
 ![Screenshot 2024-11-30 203859](https://github.com/user-attachments/assets/66c6c095-b27a-4c86-906d-2a65f815ed7d)
 ![Screenshot 2024-11-30 203914](https://github.com/user-attachments/assets/8d83538c-baf8-4a66-b407-a4f3a7ec2f12)
@@ -21,25 +22,35 @@ https://github.com/user-attachments/assets/73ee9f57-1944-4155-8108-83e70bb1f320
 
 Challenges Faced and Solutions
 1) Challenge: Deployment Environment Compatibility
+   
 Description: The application behaved differently across development and production environments.
+
 Solution: Utilized Docker to create consistent containerized environments. This ensured compatibility and smooth deployment across different platforms.
 
 
 2) Challenge: Dynamic Graph Generation in Web Application
+   
 Description: Integrating user-defined graph descriptions with backend rendering was complex.
+
 Solution: Utilized the matplotlib and Plotly libraries in Python to dynamically generate graphs based on user input. Implemented input validation and error handling to ensure the system was robust.
 
 
 3) Challenge: Security Concerns with User Authentication
+   
 Description: Handling sensitive data during user authentication raised concerns about security vulnerabilities.
+
 Solution: Used HTTPS for secure communication, encrypted user passwords with bcrypt, and implemented token-based authentication (JWT).
 
 
 4) Challenge: Compatibility Issue Between matplotlib and tkinter
+   
 Description: During the implementation of graphical features, a compatibility issue arose between matplotlib and tkinter, causing errors in rendering the graphs in a GUI environment.
+
 Solution: Resolved the issue by explicitly setting the matplotlib backend to TkAgg in the code. Additionally, updated all dependencies to their latest compatible versions to prevent similar issues in the future.
 
 
 5) Challenge: Integrating Voiceflow with Flask
+   
 Description: Initially, the integration was attempted using only the version ID and user ID. This approach was insufficient for handling dynamic user inputs and providing context-specific responses, leading to incomplete interaction capabilities.
+
 Solution: To address this limitation, the full Voiceflow API was integrated into the Flask application. This allowed for better interaction handling by enabling dynamic requests and responses, leveraging Voiceflow's state management and context features effectively.
