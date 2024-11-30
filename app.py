@@ -118,24 +118,26 @@ def signup():
 def description():
     return render_template('description.html')
 
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/predict_graph', methods=['POST'])
+def predict_graph():
     try:
-        data = request.get_json()
-        user_query = data.get('query')
+        # Step 1: Get the query from the user input
+        new_query = request.form.get('query')
 
-        if not user_query:
-            return jsonify({"error": "No query provided"}), 400
+        # Log the received query
+        print(f"Received query: {new_query}")
 
-        # Vectorize the query and predict
-        new_query_vectorized = tfidf_vectorizer.transform([user_query])
-        prediction = model.predict(new_query_vectorized)
-        predicted_graph_type = prediction[0]
-
-        # Sample data for graphing
-        sample_data = sample_data_dict.get(user_query, [])
+        if not new_query:
+            return jsonify({"error": "Query is empty"}), 400
+        result = classifier(new_query, candidate_labels=graph_types)
+        predicted_graph_type = result['labels'][0]
+        print(f"Predicted graph type: {predicted_graph_type}")
+        sample_data = sample_data_dict.get(new_query, None)
+        if sample_data is None:
+            print(f"No sample data found for query: {new_query}")
+            return jsonify({"error": "No data found for the query."}), 400
         graph_path = "static/generated_graph.png"
-
+        print(f"Graph path: {graph_path}")
         if predicted_graph_type == "Bar chart" and sample_data:
             # Generate Bar Chart
             df_sample = pd.DataFrame(sample_data)
@@ -168,11 +170,13 @@ def predict():
             return jsonify({"prediction": predicted_graph_type, "graph_path": graph_path})
 
         else:
+            print(f"Unsupported graph type or no data found for query: {new_query}")
             return jsonify({"error": "Unsupported graph type or no data found."}), 400
 
     except Exception as e:
-        print(f"Error in /predict: {e}")
-        return jsonify({"error": "Internal server error"}), 500
+        print(f"Error in /predict_graph: {e}")
+        return jsonify({"error": f"Internal server error: {e}"}), 500
+
 
 @app.route('/chat', methods=['POST'])
 def chat():
