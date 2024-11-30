@@ -15,14 +15,14 @@ import requests
 app = Flask(__name__)
 
 # MongoDB setup
-client = MongoClient('mongodb://localhost:27017/')  # Connect to MongoDB
-db = client['LLM']  # Database name
-users_collection = db['user credentials']  # Collection name
+client = MongoClient('mongodb://localhost:27017/')
+db = client['LLM'] 
+users_collection = db['user credentials'] 
 
 # Voiceflow API setup
-VOICEFLOW_API_KEY = "VF.DM.67489a6eb2be2df9d1167f85.zfH7geHXdzgQQ7HV"
-VERSION_ID = "674892085b353a1561fe4b0f"
-USER_ID = "674892085b353a1561fe4b0e"
+VOICEFLOW_API_KEY = ""
+VERSION_ID = ""
+USER_ID = ""
 
 # Load Dataset and Train Model
 file_path = "C:/Users/DELL-7420/LLM/LLM/graphdata.csv"
