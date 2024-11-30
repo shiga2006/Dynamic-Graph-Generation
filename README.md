@@ -21,6 +21,7 @@ Screen shots of the website:
 ![Screenshot 2024-11-30 203842](https://github.com/user-attachments/assets/50b6ec97-ffde-4f91-9499-6f43bb2f329b)
 ![Screenshot 2024-11-30 203859](https://github.com/user-attachments/assets/66c6c095-b27a-4c86-906d-2a65f815ed7d)
 ![Screenshot 2024-11-30 203914](https://github.com/user-attachments/assets/8d83538c-baf8-4a66-b407-a4f3a7ec2f12)
+![Screenshot 2024-11-30 214220](https://github.com/user-attachments/assets/84613ffb-0f04-4d05-a23e-a99b993bdc1e)
 ![Screenshot 2024-11-30 211704](https://github.com/user-attachments/assets/6d20102d-4ab9-43c6-a941-5c92e45d2eaa)
 
 
