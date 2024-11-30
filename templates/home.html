@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('signup') }}">Signup</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text-box">
+            <h1>Dynamic Graph Generation</h1>
+            <p>The application allows users to specify the type of analysis or visualization they require through natural language input and displays the corresponding charts dynamically.</p>
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        </div>
+    </section>
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '674892085b353a1561fe4b0e' },
+                url: 'https://creator.voiceflow.com/prototype/674892085b353a1561fe4b0f',
+                versionID: '674892085b353a1561fe4b0f'
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
+</body>
+</html>
+

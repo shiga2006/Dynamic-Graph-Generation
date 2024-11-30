@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        header nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+        }
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+        .results-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .results-container img {
+            max-width: 80%;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ username }}</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+        </nav>
+    </header>
+    <section>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Describe the graph or analysis you want (e.g., 'Compare the revenue across regions').">
+            <button type="button" onclick="performSearch()">Search</button>
+        </div>
+        <div class="results-container" id="results">
+            <!-- Search results will be dynamically added here -->
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Your Application. All rights reserved.</p>
+    </footer>
+    <script>
+        function performSearch() {
+            const query = document.getElementById("search-bar").value.trim();
+            const resultsContainer = document.getElementById("results");
+
+            if (!query) {
+                alert("Please enter a search term!");
+                return;
+            }
+
+            resultsContainer.innerHTML = `<p>Processing your request for "${query}"...</p>`;
+
+            // Send POST request to the server
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query }) // Send the user query
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Server error while processing the query.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    resultsContainer.innerHTML = `<p>Error: ${data.error}</p>`;
+                } else {
+                    resultsContainer.innerHTML = `
+                        <p>Prediction: ${data.prediction}</p>
+                        <img src="${data.graph_path}" alt="Generated Graph">
+                    `;
+                }
+            })
+            .catch(error => {
+                resultsContainer.innerHTML = `<p>Error: ${error.message}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
+
