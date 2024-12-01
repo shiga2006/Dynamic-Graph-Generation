@@ -2,6 +2,19 @@ DYNAMIC GRAPH GENERATOR
 
 AIM - The application allows users to specify the type of analysis or visualization they require through natural language input and displays the corresponding charts dynamically
 
+Project Structure:
+
+Project/
+├── static/                    # Static assets (CSS)
+│   ├── CSS/
+│      └── style.css          # Main stylesheet for the application
+├── templates/                 # HTML templates for rendering pages
+│   ├── description.html       # Page for user input and graph description
+│   ├── home.html              # Home page
+│   ├── login.html             # User login page
+│   └── signup.html            # User signup page
+├── app.py                     # Main Flask application
+├── graphdata.csv              # Dataset used for graph generation
 
 Tech Stack :
 
