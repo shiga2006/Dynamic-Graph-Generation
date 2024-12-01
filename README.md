@@ -6,9 +6,12 @@ Project Structure:
 
 Project/
 ├── static/                    # Static assets (CSS)
+|
 │   ├── CSS/
 │      └── style.css          # Main stylesheet for the application
+|
 ├── templates/                 # HTML templates for rendering pages
+|
 │   ├── description.html       # Page for user input and graph description
 │   ├── home.html              # Home page
 │   ├── login.html             # User login page
