@@ -33,10 +33,8 @@ Graph generated in the website:
 ![Screenshot 2024-11-30 215009](https://github.com/user-attachments/assets/78166866-59d1-4380-958d-189b7460f616)
 
 
-Login:
-https://github.com/user-attachments/assets/d89ee69e-126b-4406-baff-1720191896bc
-Genrating the graph from the user input: 
-https://github.com/user-attachments/assets/73ee9f57-1944-4155-8108-83e70bb1f320
+Youtube video link - https://youtu.be/2rJbAFookGg
+I have published the demo video(working of the website) in youtube check it to know the working of this website
 
 
 Challenges Faced and Solutions
