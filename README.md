@@ -4,20 +4,8 @@ AIM - The application allows users to specify the type of analysis or visualizat
 
 Project Structure:
 
-Project/
-├── static/                    # Static assets (CSS)
-|
-│   ├── CSS/
-│      └── style.css          # Main stylesheet for the application
-|
-├── templates/                 # HTML templates for rendering pages
-|
-│   ├── description.html       # Page for user input and graph description
-│   ├── home.html              # Home page
-│   ├── login.html             # User login page
-│   └── signup.html            # User signup page
-├── app.py                     # Main Flask application
-├── graphdata.csv              # Dataset used for graph generation
+![image](https://github.com/user-attachments/assets/5ea227ff-3d1a-42f0-b24e-c88b3c38652f)
+
 
 Tech Stack :
 
