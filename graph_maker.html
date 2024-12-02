@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Maker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js -->
+    <style>
+        /* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Container Styling */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+    color: #34495e;
+}
+
+/* Input and Dropdown Styling */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2980b9;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #1c5986;
+}
+
+/* Graph Section Styling */
+#graphContainer {
+    margin-top: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #ecf0f1;
+    border-radius: 8px;
+}
+
+canvas {
+    width: 100%;
+    height: 400px; /* Height of the graph container */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input[type="text"],
+    select,
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    canvas {
+            width: 100px; /* 10 inches */
+            height: 100px; /* 10 inches */
+        }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Graph Maker</h1>
+
+    <!-- Input Form -->
+    <form id="graphForm">
+        <label for="xAxisName">X-axis Name:</label><br>
+        <input type="text" id="xAxisName" name="xAxisName" required><br><br>
+
+        <label for="xValues">X-axis Values (comma-separated):</label><br>
+        <input type="text" id="xValues" name="xValues" required><br><br>
+
+        <label for="yAxisName">Y-axis Name:</label><br>
+        <input type="text" id="yAxisName" name="yAxisName" required><br><br>
+
+        <label for="yValues">Y-axis Values (comma-separated):</label><br>
+        <input type="text" id="yValues" name="yValues" required><br><br>
+
+        <label for="graphType">Graph Type:</label><br>
+        <select id="graphType" name="graphType" required>
+            <option value="bar">Bar Chart</option>
+            <option value="line">Line Chart</option>
+            <option value="pie">Pie Chart</option>
+        </select><br><br>
+
+        <button type="button" onclick="generateGraph()">Generate Graph</button>
+    </form>
+
+    <!-- Graph Display -->
+    <canvas id="graphCanvas" width="400" height="400"></canvas>
+
+    <script>
+        function generateGraph() {
+            // Get user inputs
+            const xAxisName = document.getElementById('xAxisName').value;
+            const yAxisName = document.getElementById('yAxisName').value;
+            const xValues = document.getElementById('xValues').value.split(',');
+            const yValues = document.getElementById('yValues').value.split(',').map(Number);
+            const graphType = document.getElementById('graphType').value;
+
+            // Check for valid input
+            if (xValues.length !== yValues.length) {
+                alert('X and Y values must have the same length!');
+                return;
+            }
+
+            // Clear previous graph (if any)
+            const canvas = document.getElementById('graphCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate new graph using Chart.js
+            new Chart(ctx, {
+                type: graphType,
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: 'Graph Data',
+                        data: yValues,
+                        backgroundColor: graphType === 'pie' ? ['red', 'blue', 'green', 'orange', 'purple'] : 'skyblue',
+                        borderColor: 'black',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: graphType !== 'pie'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
