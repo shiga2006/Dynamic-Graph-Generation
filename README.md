@@ -18,7 +18,10 @@ Tech Stack :
      4) Voiceflow (Codeless chatbot)
      
      5) LLM(Hugging Face’s GPT-2 model)
-     
+
+     6) Javascript
+
+     7) Emailjs
 Screen shots of the website:
 ![Screenshot 2024-11-30 212811](https://github.com/user-attachments/assets/705bcb11-b158-473f-8f03-ec5937b74c77)
 ![Screenshot 2024-11-30 212954](https://github.com/user-attachments/assets/d990d50b-8c61-4f87-823b-7402c9bec850)
