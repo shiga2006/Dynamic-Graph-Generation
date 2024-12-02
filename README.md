@@ -27,11 +27,8 @@ Screen shots of the website:
 ![Screenshot 2024-11-30 212954](https://github.com/user-attachments/assets/d990d50b-8c61-4f87-823b-7402c9bec850)
 ![Screenshot 2024-11-30 203842](https://github.com/user-attachments/assets/50b6ec97-ffde-4f91-9499-6f43bb2f329b)
 ![Screenshot 2024-11-30 203859](https://github.com/user-attachments/assets/66c6c095-b27a-4c86-906d-2a65f815ed7d)
-![Screenshot 2024-11-30 203914](https://github.com/user-attachments/assets/8d83538c-baf8-4a66-b407-a4f3a7ec2f12)
-![Screenshot 2024-11-30 214519](https://github.com/user-attachments/assets/7f6a032f-ff2e-4220-8b48-f0ef38f0a3c7)
 ![image](https://github.com/user-attachments/assets/d618f481-c75c-40ce-82f5-2746ba2387aa)
 ![Screenshot 2024-12-02 214017](https://github.com/user-attachments/assets/a48e5e2e-ef40-46f7-9d98-a41abb8b1f5c)
-
 ![Screenshot 2024-11-30 211704](https://github.com/user-attachments/assets/6d20102d-4ab9-43c6-a941-5c92e45d2eaa)
 
 
