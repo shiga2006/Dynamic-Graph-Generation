@@ -38,7 +38,7 @@ Graph generated in the website:
 ![Screenshot 2024-11-30 215009](https://github.com/user-attachments/assets/78166866-59d1-4380-958d-189b7460f616)
 
 
-Youtube video link - https://youtu.be/2rJbAFookGg
+Youtube video link -[ https://youtu.be/2rJbAFookGg](https://www.youtube.com/watch?v=2rJbAFookGg&list=PL1Zw2iWy4ih9kuO9z0q3GstqW-d2sjsua)
 I have published the demo video(working of the website) in youtube check it to know the working of this website
 
 
