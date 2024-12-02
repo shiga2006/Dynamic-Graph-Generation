@@ -23,7 +23,7 @@ Tech Stack :
 
      7) Emailjs
 Screen shots of the website:
-![Screenshot 2024-11-30 212811](https://github.com/user-attachments/assets/705bcb11-b158-473f-8f03-ec5937b74c77)
+![Screenshot 2024-12-02 193542](https://github.com/user-attachments/assets/cb2d8810-ecbf-4d77-bc72-0f45abb87ace)
 ![Screenshot 2024-11-30 212954](https://github.com/user-attachments/assets/d990d50b-8c61-4f87-823b-7402c9bec850)
 ![Screenshot 2024-11-30 203842](https://github.com/user-attachments/assets/50b6ec97-ffde-4f91-9499-6f43bb2f329b)
 ![Screenshot 2024-11-30 203859](https://github.com/user-attachments/assets/66c6c095-b27a-4c86-906d-2a65f815ed7d)
