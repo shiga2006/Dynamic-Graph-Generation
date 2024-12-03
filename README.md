@@ -4,7 +4,7 @@ AIM - The application allows users to specify the type of analysis or visualizat
 
 Project Structure:
 
-![image](https://github.com/user-attachments/assets/5ea227ff-3d1a-42f0-b24e-c88b3c38652f)
+![image](https://github.com/user-attachments/assets/b892e3ca-1f16-4cb3-aa73-b0fc74a4567f)
 
 
 Tech Stack :
