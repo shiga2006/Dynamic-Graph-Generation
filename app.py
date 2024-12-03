@@ -163,45 +163,6 @@ def description():
 def contact():
     return render_template('contact.html')
 
-@app.route('/send_mail', methods=['POST'])
-def send_mail():
-    try:
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
-
-        # EmailJS API configuration
-        emailjs_service_id = ""  # Replace with your EmailJS service ID
-        emailjs_template_id = ""  # Replace with your EmailJS template ID
-        emailjs_user_id = ""  # Replace with your EmailJS public key
-
-        # Data to send to EmailJS
-        payload = {
-            "service_id": emailjs_service_id,
-            "template_id": emailjs_template_id,
-            "user_id": emailjs_user_id,
-            "template_params": {
-                "from_name": name,
-                "from_email": email,
-                "message": message
-            }
-        }
-
-        # Make a POST request to EmailJS API
-        response = requests.post(
-            "https://api.emailjs.com/api/v1.0/email/send",
-            json=payload
-        )
-
-        # Check the response status
-        if response.status_code == 200:
-            return jsonify({'status': 'success', 'message': 'Your message has been sent successfully!'})
-        else:
-            return jsonify({'status': 'error', 'message': 'Failed to send the message. Please try again.'})
-
-    except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)})
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -291,8 +252,6 @@ def chat():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
 
 
 
