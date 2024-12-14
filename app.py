@@ -24,10 +24,7 @@ GRAPH_DIR = 'static/graphs'
 # Ensure the directory exists
 if not os.path.exists(GRAPH_DIR):
     os.makedirs(GRAPH_DIR)
-# Voiceflow API setup
-VOICEFLOW_API_KEY = ""
-VERSION_ID = ""
-USER_ID = ""
+
 
 # Load Dataset and Train Model
 file_path = "C:/Users/DELL-7420/LLM/LLM/graphdata.csv"
@@ -45,7 +42,7 @@ print("Model Accuracy:", model.score(X_test, y_test))
 
 # Sample data for graph generation
 sample_data_dict = {
-    "Show me a bar graph for vehicle sales by type": [
+    "Show me a bar graph for vehicle sales by type ": [
         {"Car Type": "Sedan", "Count": 2000},
         {"Car Type": "SUV", "Count": 1500},
         {"Car Type": "Hatchback", "Count": 1800}
@@ -87,7 +84,7 @@ sample_data_dict = {
         {"City": "Delhi", "Rainfall (mm)": 100},
         {"City": "Chennai", "Rainfall (mm)": 120}
     ],
-    "Give me a scatter plot of humidity vs temperature": [
+    "Give me a graph of humidity vs temperature": [
         {"Temperature (°C)": 30, "Humidity (%)": 70},
         {"Temperature (°C)": 32, "Humidity (%)": 75},
         {"Temperature (°C)": 33, "Humidity (%)": 80}
@@ -108,9 +105,66 @@ sample_data_dict = {
        {"Sector": "Agriculture", "Contribution (%)": 18},
        {"Sector": "Services", "Contribution (%)": 55},
        {"Sector": "Industry", "Contribution (%)": 27}
-    ]     
-   
-    
+    ],
+    "Generate a pie chart showing vehicle sales categorized by regions": [
+        {"Region": "North", "Sales": 1500},
+        {"Region": "South", "Sales": 1800},
+        {"Region": "East", "Sales": 1200},
+        {"Region": "West", "Sales": 1600}
+    ],
+    "Create a graph showing how temperatures have varied day by day over the last 5 days": [
+        {"Day": 1, "Temperature (°C)": 32},
+        {"Day": 2, "Temperature (°C)": 34},
+        {"Day": 3, "Temperature (°C)": 33},
+        {"Day": 4, "Temperature (°C)": 31},
+        {"Day": 5, "Temperature (°C)": 30}
+    ],
+    "Create a scatter plot of cleanliness vs population for each state": [
+    {"State": "California", "Cleanliness Index": 85, "Population (in millions)": 39.5},
+    {"State": "Texas", "Cleanliness Index": 78, "Population (in millions)": 29},
+    {"State": "Florida", "Cleanliness Index": 82, "Population (in millions)": 21.5},
+    {"State": "New York", "Cleanliness Index": 80, "Population (in millions)": 19.8},
+    {"State": "Illinois", "Cleanliness Index": 75, "Population (in millions)": 12.7}
+    ],
+    "Plot a line graph of India's GDP growth over the last decade": [
+    {"Year": 2013, "GDP Growth (%)": 6.4},
+    {"Year": 2014, "GDP Growth (%)": 7.0},
+    {"Year": 2015, "GDP Growth (%)": 7.5},
+    {"Year": 2016, "GDP Growth (%)": 8.2},
+    {"Year": 2017, "GDP Growth (%)": 6.8},
+    {"Year": 2018, "GDP Growth (%)": 6.5},
+    {"Year": 2019, "GDP Growth (%)": 4.0},
+    {"Year": 2020, "GDP Growth (%)": -7.3},
+    {"Year": 2021, "GDP Growth (%)": 9.5},
+    {"Year": 2022, "GDP Growth (%)": 7.0}
+    ],
+    "Show me a scatter plot of GDP vs inflation for India": [
+    {"Year": 2013, "GDP (in trillion USD)": 2.0, "Inflation (%)": 9.4},
+    {"Year": 2014, "GDP (in trillion USD)": 2.2, "Inflation (%)": 6.5},
+    {"Year": 2015, "GDP (in trillion USD)": 2.3, "Inflation (%)": 4.9},
+    {"Year": 2016, "GDP (in trillion USD)": 2.5, "Inflation (%)": 4.5},
+    {"Year": 2017, "GDP (in trillion USD)": 2.7, "Inflation (%)": 3.3},
+    {"Year": 2018, "GDP (in trillion USD)": 2.9, "Inflation (%)": 3.9},
+    {"Year": 2019, "GDP (in trillion USD)": 3.0, "Inflation (%)": 4.8},
+    {"Year": 2020, "GDP (in trillion USD)": 2.7, "Inflation (%)": 6.2},
+    {"Year": 2021, "GDP (in trillion USD)": 3.1, "Inflation (%)": 5.1},
+    {"Year": 2022, "GDP (in trillion USD)": 3.4, "Inflation (%)": 6.7}
+    ],
+    "Create a pie chart of India's GDP share by state": [
+    {"State": "Maharashtra", "GDP Contribution (%)": 14.4},
+    {"State": "Tamil Nadu", "GDP Contribution (%)": 8.4},
+    {"State": "Uttar Pradesh", "GDP Contribution (%)": 8.0},
+    {"State": "Karnataka", "GDP Contribution (%)": 7.9},
+    {"State": "Gujarat", "GDP Contribution (%)": 7.8}
+    ],
+    "Plot a bar chart of GDP per capita for Indian states": [
+    {"State": "Goa", "GDP Per Capita (in USD)": 6500},
+    {"State": "Delhi", "GDP Per Capita (in USD)": 5000},
+    {"State": "Sikkim", "GDP Per Capita (in USD)": 4700},
+    {"State": "Haryana", "GDP Per Capita (in USD)": 4500},
+    {"State": "Karnataka", "GDP Per Capita (in USD)": 4300}
+    ]
+
 }
 
 @app.route('/')
@@ -228,30 +282,15 @@ def predict():
         print(f"Error in /predict: {e}")
         return jsonify({"error": "Internal server error"}), 500
 
-@app.route('/chat', methods=['POST'])
-def chat():
-    user_message = request.json.get("message")
-    if not user_message:
-        return jsonify({"error": "No message provided"}), 400
-
-    voiceflow_url = f"https://general-runtime.voiceflow.com/state/{VERSION_ID}/user/{USER_ID}/interact"
-    payload = {"request": {"type": "text", "payload": user_message}}
-    headers = {"Authorization": VOICEFLOW_API_KEY, "Content-Type": "application/json"}
-
-    try:
-        response = requests.post(voiceflow_url, json=payload, headers=headers)
-        response_data = response.json()
-        if response.status_code == 200 and "responses" in response_data:
-            bot_responses = response_data["responses"]
-            bot_message = "\n".join([resp.get("text", "") for resp in bot_responses])
-            return jsonify({"response": bot_message})
-        else:
-            return jsonify({"error": "Failed to get response from chatbot"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
 
 
 
